@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "SLocator",
+    "slug": "slocator",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#154734"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "edu.calpoly.slocator",
+      "infoPlist": {
+        "NSCameraUsageDescription": "SLocator uses your camera to take photos of campus buildings for identification.",
+        "NSPhotoLibraryUsageDescription": "SLocator accesses your photo library so you can analyze existing photos of campus buildings."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#154734"
+      },
+      "package": "edu.calpoly.slocator",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "SLocator accesses your photos to identify campus buildings.",
+          "cameraPermission": "SLocator uses your camera to capture campus buildings."
+        }
+      ]
+    ],
+    "scheme": "slocator",
+    "extra": {
+      "eas": {
+        "projectId": "your-eas-project-id"
+      }
+    }
+  }
+}
