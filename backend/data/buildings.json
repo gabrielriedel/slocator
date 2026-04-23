@@ -1,0 +1,610 @@
+[
+    {
+      "building_id": "1",
+      "name": "Administration Building",
+      "type": "Administration",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "2",
+      "name": "Education Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["ENGL", "LS", "POLS"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "3",
+      "name": "Business Building",
+      "type": "Administration",
+      "fun_facts": [],
+      "classes": ["BUS", "ECON", "ITP"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "4",
+      "name": "Research Development Center",
+      "type": "Laboratory",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "5",
+      "name": "Architecture & Environmental Design Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["ARCH","LA", "ARCE", "CM", "CRP"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "6",
+      "name": "Performing Arts Center",
+      "type": "Event Space",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "7",
+      "name": "Advanced Technology Labs",
+      "type": "Laboratory",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "8",
+      "name": "Bioresource and Agricultural Engineering Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["BRAE"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "9",
+      "name": "Farm Shop Building",
+      "type": "Agriculture Unit",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "10",
+      "name": "Erhart Agriculture Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["AGB", "AGC", "AGED", "AG", "EE", "ME", "PHIL", "POLS"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "11",
+      "name": "Agricultural Sciences Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "13",
+      "name": "Engineering Building",
+      "type": "Classroom",
+      "fun_facts": ["CE", "ENVE"],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "14",
+      "name": "Frank E. Piling Computer Science Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["CSC", "CPE", "SE", "DATA"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "15",
+      "name": "Mustang Commons Building",
+      "type": "IDK",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "17",
+      "name": "Crop Science Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "18",
+      "name": "Dairy Science Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "19",
+      "name": "Dining Complex",
+      "type": "Dining",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "20",
+      "name": "Engineering East Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["CPE", "CSC", "EE", "ENGL"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "21",
+      "name": "Engineering West Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["EE", "ITP", "COMS", "ENGL"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "22",
+      "name": "English Building",   
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["ENGL", "ES", "COMS"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "24",
+      "name": "Food Processing Building",
+      "type": "Agriculture Unit",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "25",
+      "name": "Faculty Offices East Building",
+      "type": "Administration",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "26",
+      "name": "Graphic Arts Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["GRC", "ANT", "GEOG", "JOUR", "PSY"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "27",
+      "name": "Health Center",
+      "type": "Health",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "28",
+      "name": "Alumni and Conference Center",
+      "type": "Event Space",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "33",
+      "name": "Fisher Science Hall",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["BIO", "CHEM", "BOT"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "34",
+      "name": "Dexter Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["ART"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "35",
+      "name": "Kennedy Library",
+      "type": "Library",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "36",
+      "name": "University Police Building",
+      "type": "Administration",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "38",
+      "name": "Mathematics and Science Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["MATH", "STAT", "LS", "CD"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "40",
+      "name": "Engineering South Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "41",
+      "name": "Brown Engineering Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["AERO", "IME", "MATE"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "42",
+      "name": "Mott Athletics Center",
+      "type": "Event Space",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "43",
+      "name": "Recreation Center",
+      "type": "Event Space",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "44",
+      "name": "Theater",
+      "type": "Event Space",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "45",
+      "name": "Davidson Music Center",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["MU"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "46",
+      "name": "Old Natatorium",
+      "type": "Event Space",
+      "fun_facts": [],
+      "classes": ["DANC"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "47",
+      "name": "Faculty Offices North Building",
+      "type": "Administration",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "48",
+      "name": "Horticultural Science Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "51",
+      "name": "University House",
+      "type": "Administration",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "52",
+      "name": "Science Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["ASTR", "ISLA"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "53",
+      "name": "Science North Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["PHYS", "MSCI"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "57",
+      "name": "Veterinary Hospital",
+      "type": "Health",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "58",
+      "name": "Welding Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "60",
+      "name": "Crandall Gymnasium",
+      "type": "Event Space",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "65",
+      "name": "McPhee University Union",
+      "type": "Event Space",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "72",
+      "name": "Plant Conservatory",
+      "type": "Event Space",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "74",
+      "name": "Football Center",
+      "type": "Event Space",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "81",
+      "name": "Hillcrest Building",
+      "type": "IDK",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "100",
+      "name": "Shasta Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "101",
+      "name": "Diablo Hall",    
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "102",
+      "name": "Palomar Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "103",
+      "name": "Whitney Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "104",
+      "name": "Lassen Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "105",
+      "name": "Trinity Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "106",
+      "name": "Santa Lucia Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "17",
+      "name": "Muir Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "108",
+      "name": "Sequoia Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "109",
+      "name": "Fremont Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "110",
+      "name": "Tenaya Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "112",
+      "name": "Vista Grande",
+      "type": "Dining",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "113",
+      "name": "Sierra Madre Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "114",
+      "name": "Yosemite Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "115",
+      "name": "Chase Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "116",
+      "name": "Jespersen Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "117",
+      "name": "Heron Hall",
+      "type": "Residence Hall",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "124",
+      "name": "Student Services Building",
+      "type": "Administration",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "133",
+      "name": "Orfalea Children's Center",
+      "type": "IDK",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "156",
+      "name": "E & J Gallo Building",
+      "type": "IDK",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "157",
+      "name": "Lohr Family Winery",
+      "type": "IDK",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "159",
+      "name": "Plant Sciences Complex",
+      "type": "IDK",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "180",
+      "name": "Baker Center for Science and Math",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "181",
+      "name": "Frost Center",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["AERO", "PSY"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "186",
+      "name": "Construction Innovations Center",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["CSC", "STAT", "CM", "GEOG", "HIST"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "192",
+      "name": "Engineering IV Building",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": ["AERO", "BMED", "CE", "CSC", "ENVE", "IME", "MATE", "ME"],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "197",
+      "name": "Engineering Projects Center",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    }
+  ]
