@@ -15,6 +15,17 @@ import { Colors, Typography, Spacing, BorderRadius, Shadows } from '../constants
 export default function HomeScreen() {
   const router = useRouter();
 
+  function openAnalyze(asset: ImagePicker.ImagePickerAsset) {
+    router.push({
+      pathname: '/analyze',
+      params: {
+        imageUri: asset.uri,
+        imageName: asset.fileName ?? '',
+        imageMimeType: asset.mimeType ?? '',
+      },
+    });
+  }
+
   async function requestPermission(type: 'camera' | 'library'): Promise<boolean> {
     if (type === 'camera') {
       const { status } = await ImagePicker.requestCameraPermissionsAsync();
@@ -52,7 +63,7 @@ export default function HomeScreen() {
     });
 
     if (!result.canceled && result.assets[0]) {
-      router.push({ pathname: '/analyze', params: { imageUri: result.assets[0].uri } });
+      openAnalyze(result.assets[0]);
     }
   }
 
@@ -68,7 +79,7 @@ export default function HomeScreen() {
     });
 
     if (!result.canceled && result.assets[0]) {
-      router.push({ pathname: '/analyze', params: { imageUri: result.assets[0].uri } });
+      openAnalyze(result.assets[0]);
     }
   }
 

@@ -1,25 +1,17 @@
 /**
- * modelService.ts
- * ---------------
  * Building prediction service.
  *
- * CURRENTLY: Returns a mock prediction for UI development.
- *
- * TO PLUG IN YOUR REAL MODEL:
- * 1. Remove the mock implementation below
- * 2. Load your model (TensorFlow.js, ONNX Runtime, or call a remote API)
- * 3. Preprocess the image (resize to model input size, normalize)
- * 4. Run inference and return the top prediction as a Prediction object
- *
- * See README.md for detailed integration instructions.
+ * Calls the Gradio app that wraps the local OpenCLIP + SIFT-LightGlue ranker.
+ * The current public URL is temporary, so update GRADIO_BASE_URL whenever you
+ * restart Gradio and get a new gradio.live link.
  */
 
-import { buildings } from '../data/buildings';
+import { Platform } from 'react-native';
 
 export interface Prediction {
-  buildingId: string;    // matches Building.id in data/buildings.ts
-  confidence: number;    // 0.0 – 1.0
-  topK?: PredictionCandidate[];  // Optional: top-K predictions for display
+  buildingId: string;
+  confidence: number;
+  topK?: PredictionCandidate[];
 }
 
 export interface PredictionCandidate {
@@ -27,100 +19,284 @@ export interface PredictionCandidate {
   confidence: number;
 }
 
-// ─────────────────────────────────────────────────────────────
-// MOCK IMPLEMENTATION — replace this function with your model
-// ─────────────────────────────────────────────────────────────
-
-/**
- * Predict which Cal Poly building is shown in the given image.
- *
- * @param imageUri - Local file URI of the image (from expo-image-picker)
- * @returns Prediction with buildingId and confidence score
- *
- * TODO: Replace mock body with real model inference
- */
-export async function predictBuilding(imageUri: string): Promise<Prediction> {
-  // ── MOCK: simulate model latency ──────────────────────────
-  await new Promise((resolve) => setTimeout(resolve, 1800));
-
-  // ── MOCK: rotate through buildings for demo purposes ──────
-  const mockBuildings = [
-    { buildingId: 'kennedy-library', confidence: 0.94 },
-    { buildingId: 'engineering-iv', confidence: 0.89 },
-    { buildingId: 'baker-science', confidence: 0.76 },
-    { buildingId: 'dexter-building', confidence: 0.91 },
-    { buildingId: 'performing-arts-center', confidence: 0.83 },
-  ];
-
-  // Pseudo-random pick based on imageUri string hash (demo only)
-  const hash = imageUri.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-  const pick = mockBuildings[hash % mockBuildings.length];
-
-  // Build top-K mock candidates
-  const others = buildings
-    .filter((b) => b.id !== pick.buildingId)
-    .slice(0, 3)
-    .map((b, i) => ({
-      buildingId: b.id,
-      confidence: Math.max(0.05, pick.confidence - 0.15 - i * 0.08),
-    }));
-
-  return {
-    buildingId: pick.buildingId,
-    confidence: pick.confidence,
-    topK: [{ buildingId: pick.buildingId, confidence: pick.confidence }, ...others],
-  };
+interface UploadImageOptions {
+  fileName?: string;
+  mimeType?: string;
 }
 
-// ─────────────────────────────────────────────────────────────
-// REAL MODEL INTEGRATION TEMPLATE (uncomment and adapt)
-// ─────────────────────────────────────────────────────────────
+type GradioDataframe = {
+  headers: string[];
+  data: unknown[][];
+};
 
-/*
-import * as tf from '@tensorflow/tfjs';
-import { decodeJpeg } from '@tensorflow/tfjs-react-native';
-import * as FileSystem from 'expo-file-system';
+const GRADIO_BASE_URL = 'https://2e29fc8cd177e269cf.gradio.live';
+const GRADIO_RESULT_TIMEOUT_MS = 180000;
 
-let model: tf.LayersModel | null = null;
+const EXACT_LABEL_TO_BUILDING_ID: Record<string, string> = {
+  '0architectureuploadwithsubflowerrorhandling587undistortedimages': 'engineering-west-architecture',
+  '0businesscotchettuploadwithsubflowerrorhandling587undistortedimages': 'business-building',
+  '0constructioninnovationuploadwithsubflowerrorhandling587undistortedimages': 'construction-innovations-center',
+  '0dexteruploadwithsubflowerrorhandling587undistortedimages': 'dexter-building',
+  '0engineeringeastuploadwithsubflowerrorhandling587undistortedimages': 'engineering-east',
+  '0frankepilinguploadwithsubflowerrorhandling587undistortedimages': 'frank-pilling',
+  '1bakeruploadwithsubflowerrorhandling587undistortedimages': 'baker-science',
+  '1frostuploadwithsubflowerrorhandling587undistortedimages': 'frost-center',
+  '1reccenteruploadwithsubflowerrorhandling587undistortedimages': 'recreation-center',
+  '2uuuploadwithsubflowerrorhandling587undistortedimages': 'university-union',
+};
 
-async function loadModel(): Promise<tf.LayersModel> {
-  if (model) return model;
-  // Load from bundled assets or remote URL:
-  model = await tf.loadLayersModel('https://your-model-url/model.json');
-  return model;
+function canonical(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
-export async function predictBuilding(imageUri: string): Promise<Prediction> {
-  const m = await loadModel();
+function mapModelLabelToBuildingId(label: string): string | null {
+  const key = canonical(label);
+  const exact = EXACT_LABEL_TO_BUILDING_ID[key];
+  if (exact) return exact;
 
-  // Read image bytes
-  const imgB64 = await FileSystem.readAsStringAsync(imageUri, {
-    encoding: FileSystem.EncodingType.Base64,
+  if (key.includes('constructioninnovation')) return 'construction-innovations-center';
+  if (key.includes('business') || key.includes('cotchett')) return 'business-building';
+  if (key.includes('engineeringeast')) return 'engineering-east';
+  if (key.includes('frankepiling') || key.includes('pilling')) return 'frank-pilling';
+  if (key.includes('architecture')) return 'engineering-west-architecture';
+  if (key.includes('dexter')) return 'dexter-building';
+  if (key.includes('frost')) return 'frost-center';
+  if (key.includes('baker')) return 'baker-science';
+  if (key.includes('reccenter') || key.includes('recreation')) return 'recreation-center';
+  if (key.includes('uu') || key.includes('universityunion')) return 'university-union';
+  if (key.includes('nobuilding')) return null;
+
+  return null;
+}
+
+function inferMimeType(uri: string, explicitMimeType?: string): string {
+  if (explicitMimeType) return explicitMimeType;
+
+  const dataUriMatch = uri.match(/^data:([^;,]+)/);
+  if (dataUriMatch?.[1]) return dataUriMatch[1];
+
+  const lower = uri.toLowerCase();
+  if (lower.endsWith('.png')) return 'image/png';
+  if (lower.endsWith('.webp')) return 'image/webp';
+  if (lower.endsWith('.heic')) return 'image/heic';
+  if (lower.endsWith('.heif')) return 'image/heif';
+  return 'image/jpeg';
+}
+
+function extensionFromMimeType(mimeType: string): string {
+  const normalized = mimeType.toLowerCase();
+  if (normalized.includes('png')) return 'png';
+  if (normalized.includes('webp')) return 'webp';
+  if (normalized.includes('heic')) return 'heic';
+  if (normalized.includes('heif')) return 'heif';
+  return 'jpg';
+}
+
+function hasAllowedExtension(fileName: string): boolean {
+  return /\.(jpe?g|png|heic|heif|webp)$/i.test(fileName);
+}
+
+function safeUploadFileName(imageUri: string, options: UploadImageOptions = {}): string {
+  const mimeType = inferMimeType(imageUri, options.mimeType);
+  const explicitName = options.fileName?.trim();
+  const cleanUri = imageUri.split('?')[0] ?? imageUri;
+  const uriName = cleanUri.startsWith('data:') ? '' : cleanUri.substring(cleanUri.lastIndexOf('/') + 1);
+  const rawName = explicitName || uriName;
+
+  if (rawName && hasAllowedExtension(rawName)) {
+    return rawName.replace(/[^\w.\-]/g, '_');
+  }
+
+  return `photo.${extensionFromMimeType(mimeType)}`;
+}
+
+async function uploadImageToGradio(imageUri: string, options: UploadImageOptions = {}): Promise<string> {
+  const formData = new FormData();
+  const fileName = safeUploadFileName(imageUri, options);
+  const mimeType = inferMimeType(imageUri, options.mimeType);
+
+  if (Platform.OS === 'web') {
+    const imageResponse = await fetch(imageUri);
+    if (!imageResponse.ok) {
+      throw new Error(`Could not read selected image: ${imageResponse.status}`);
+    }
+    const imageBlob = await imageResponse.blob();
+    const uploadBlob = imageBlob.type ? imageBlob : new Blob([imageBlob], { type: mimeType });
+    formData.append('files', uploadBlob, fileName);
+  } else {
+    formData.append('files', {
+      uri: imageUri,
+      name: fileName,
+      type: mimeType,
+    } as any);
+  }
+
+  const response = await fetch(`${GRADIO_BASE_URL}/gradio_api/upload`, {
+    method: 'POST',
+    body: formData,
   });
-  const imgBuffer = tf.util.encodeString(imgB64, 'base64') as Uint8Array;
-  const imageTensor = decodeJpeg(imgBuffer);
 
-  // Preprocess: resize to model input size and normalize
-  const resized = tf.image.resizeBilinear(imageTensor, [224, 224]);
-  const normalized = resized.div(255.0).expandDims(0);
+  if (!response.ok) {
+    throw new Error(`Gradio upload failed: ${response.status}`);
+  }
 
-  // Run inference
-  const output = m.predict(normalized) as tf.Tensor;
-  const probabilities = await output.data();
-
-  // Map to building IDs (index must match your training class order)
-  const buildingIds = buildings.map((b) => b.id);
-  const topIdx = Array.from(probabilities)
-    .map((p, i) => ({ i, p }))
-    .sort((a, b) => b.p - a.p)
-    .slice(0, 5);
-
-  tf.dispose([imageTensor, resized, normalized, output]);
-
-  return {
-    buildingId: buildingIds[topIdx[0].i],
-    confidence: topIdx[0].p,
-    topK: topIdx.map(({ i, p }) => ({ buildingId: buildingIds[i], confidence: p })),
-  };
+  const json = await response.json();
+  const uploadedPath = Array.isArray(json) ? json[0] : null;
+  if (typeof uploadedPath !== 'string') {
+    throw new Error('Gradio upload response did not include a file path.');
+  }
+  return uploadedPath;
 }
-*/
+
+function parseGradioSseText(sseText: string): unknown[] | null {
+  const blocks = sseText.split(/\r?\n\r?\n/);
+
+  for (const block of blocks) {
+    const lines = block.split(/\r?\n/);
+    const event = lines
+      .find((line) => line.startsWith('event: '))
+      ?.slice('event: '.length)
+      .trim();
+    const data = lines
+      .filter((line) => line.startsWith('data: '))
+      .map((line) => line.slice('data: '.length))
+      .join('\n');
+
+    if (event === 'error') {
+      throw new Error(data || 'Gradio returned an error event.');
+    }
+
+    if (event === 'complete' && data) {
+      return JSON.parse(data);
+    }
+  }
+
+  return null;
+}
+
+async function readGradioResult(response: Response): Promise<unknown[]> {
+  const stream = response.body;
+
+  if (!stream || !('getReader' in stream)) {
+    const parsed = parseGradioSseText(await response.text());
+    if (!parsed) {
+      throw new Error('Gradio result did not include a complete data event.');
+    }
+    return parsed;
+  }
+
+  const reader = stream.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (value) {
+        buffer += decoder.decode(value, { stream: !done });
+        const parsed = parseGradioSseText(buffer);
+        if (parsed) {
+          await reader.cancel();
+          return parsed;
+        }
+      }
+      if (done) break;
+    }
+  } finally {
+    reader.releaseLock();
+  }
+
+  const parsed = parseGradioSseText(buffer);
+  if (!parsed) {
+    throw new Error('Gradio result stream ended without a complete data event.');
+  }
+  return parsed;
+}
+
+async function callGradioPredict(uploadedPath: string): Promise<unknown[]> {
+  const callResponse = await fetch(`${GRADIO_BASE_URL}/gradio_api/call/predict`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      data: [
+        {
+          path: uploadedPath,
+          meta: { _type: 'gradio.FileData' },
+        },
+      ],
+    }),
+  });
+
+  if (!callResponse.ok) {
+    throw new Error(`Gradio predict call failed: ${callResponse.status}`);
+  }
+
+  const callJson = await callResponse.json();
+  if (!callJson.event_id) {
+    throw new Error('Gradio predict response did not include an event id.');
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), GRADIO_RESULT_TIMEOUT_MS);
+
+  try {
+    const resultResponse = await fetch(`${GRADIO_BASE_URL}/gradio_api/call/predict/${callJson.event_id}`, {
+      signal: controller.signal,
+    });
+    if (!resultResponse.ok) {
+      throw new Error(`Gradio result fetch failed: ${resultResponse.status}`);
+    }
+
+    return await readGradioResult(resultResponse);
+  } catch (err) {
+    if (err instanceof DOMException && err.name === 'AbortError') {
+      throw new Error('Timed out waiting for Gradio prediction result.');
+    }
+    throw err;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+function numberFromCell(value: unknown, fallback: number): number {
+  const numberValue = typeof value === 'number' ? value : Number(value);
+  return Number.isFinite(numberValue) ? numberValue : fallback;
+}
+
+function predictionsFromTable(table: GradioDataframe | null): PredictionCandidate[] {
+  if (!table?.data) return [];
+
+  const seen = new Set<string>();
+  const candidates: PredictionCandidate[] = [];
+
+  for (const row of table.data) {
+    const label = String(row[0] ?? '');
+    const buildingId = mapModelLabelToBuildingId(label);
+    if (!buildingId || seen.has(buildingId)) continue;
+
+    seen.add(buildingId);
+    candidates.push({
+      buildingId,
+      confidence: Math.max(0, Math.min(1, numberFromCell(row[1], 0))),
+    });
+  }
+
+  return candidates;
+}
+
+export async function predictBuilding(imageUri: string, options: UploadImageOptions = {}): Promise<Prediction> {
+  const uploadedPath = await uploadImageToGradio(imageUri, options);
+  const result = await callGradioPredict(uploadedPath);
+
+  const label = String(result[0] ?? '');
+  const table = result[2] as GradioDataframe | null;
+  const buildingId = mapModelLabelToBuildingId(label);
+  const topK = predictionsFromTable(table);
+
+  if (!buildingId) {
+    throw new Error(`Model returned an unmapped building label: ${label}`);
+  }
+
+  const confidence = topK[0]?.buildingId === buildingId ? topK[0].confidence : 0.5;
+  return { buildingId, confidence, topK };
+}

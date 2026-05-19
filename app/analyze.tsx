@@ -15,35 +15,73 @@ import CalPolyButton from '../components/CalPolyButton';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Colors, Typography, Spacing, BorderRadius, Shadows } from '../constants/theme';
 
+interface AnalyzeResult {
+  buildingId: string;
+  buildingName: string;
+  confidence: number;
+}
+
 export default function AnalyzeScreen() {
-  const { imageUri } = useLocalSearchParams<{ imageUri: string }>();
+  const { imageUri, imageName, imageMimeType } = useLocalSearchParams<{
+    imageUri: string;
+    imageName?: string;
+    imageMimeType?: string;
+  }>();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState('');
+  const [error, setError] = useState('');
+  const [result, setResult] = useState<AnalyzeResult | null>(null);
+
+  function openResult(nextResult = result) {
+    if (!imageUri || !nextResult) return;
+    router.push({
+      pathname: '/result',
+      params: {
+        imageUri,
+        buildingId: nextResult.buildingId,
+        confidence: String(nextResult.confidence),
+      },
+    });
+  }
 
   async function handleAnalyze() {
     if (!imageUri) return;
+    setError('');
+    setResult(null);
+    setStatus('Uploading photo to the model...');
     setLoading(true);
 
     try {
-      const prediction = await predictBuilding(imageUri);
+      console.log('[SLocator] Starting prediction for', imageUri, imageName, imageMimeType);
+      const prediction = await predictBuilding(imageUri, {
+        fileName: imageName,
+        mimeType: imageMimeType,
+      });
+      console.log('[SLocator] Prediction result', prediction);
+      setStatus(`Model returned ${prediction.buildingId}. Looking up building details...`);
       const building = getBuildingById(prediction.buildingId);
 
       if (!building) {
-        Alert.alert('Unknown Building', "The model returned a building ID we don't recognize yet. Please add it to data/buildings.ts.");
+        const message = `The model returned "${prediction.buildingId}", but that building is not in data/buildings.ts yet.`;
+        setError(message);
+        Alert.alert('Unknown Building', message);
         setLoading(false);
         return;
       }
 
-      router.push({
-        pathname: '/result',
-        params: {
-          imageUri,
-          buildingId: prediction.buildingId,
-          confidence: String(prediction.confidence),
-        },
-      });
+      const nextResult = {
+        buildingId: prediction.buildingId,
+        buildingName: building.name,
+        confidence: prediction.confidence,
+      };
+      setResult(nextResult);
+      setStatus(`Identified ${building.name}.`);
     } catch (err) {
-      Alert.alert('Analysis Failed', 'Something went wrong running the model. Check the console for details.');
+      const message = err instanceof Error ? err.message : 'Something went wrong running the model.';
+      setError(message);
+      setStatus('Analysis stopped before a result page could open.');
+      Alert.alert('Analysis Failed', message);
       console.error('[SLocator] Model error:', err);
     } finally {
       setLoading(false);
@@ -93,6 +131,29 @@ export default function AnalyzeScreen() {
             )}
           </View>
         </View>
+
+        {(status || error || result) ? (
+          <View style={[styles.statusCard, error ? styles.errorCard : result ? styles.successCard : null]}>
+            {status ? <Text style={styles.statusText}>{status}</Text> : null}
+            {error ? <Text style={styles.errorMessage}>{error}</Text> : null}
+            {result ? (
+              <View style={styles.resultBox}>
+                <Text style={styles.resultLabel}>Prediction</Text>
+                <Text style={styles.resultName}>{result.buildingName}</Text>
+                <Text style={styles.resultMeta}>
+                  {result.buildingId} · {(result.confidence * 100).toFixed(1)}%
+                </Text>
+                <CalPolyButton
+                  label="Open Full Result"
+                  onPress={() => openResult(result)}
+                  variant="secondary"
+                  size="md"
+                  style={styles.resultButton}
+                />
+              </View>
+            ) : null}
+          </View>
+        ) : null}
 
         {/* Loading or CTA */}
         {loading ? (
@@ -193,6 +254,55 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   analyzeBtn: { width: '100%' },
+
+  statusCard: {
+    marginHorizontal: Spacing.md,
+    marginTop: Spacing.sm,
+    backgroundColor: Colors.darkGreen,
+    borderRadius: BorderRadius.md,
+    borderWidth: 1,
+    borderColor: Colors.gold + '66',
+    padding: Spacing.md,
+    gap: Spacing.xs,
+  },
+  successCard: {
+    borderColor: Colors.gold,
+  },
+  errorCard: {
+    borderColor: '#FFB4A8',
+  },
+  statusText: {
+    color: 'rgba(255,255,255,0.8)',
+    fontSize: Typography.fontSizeSM,
+    lineHeight: 20,
+  },
+  errorMessage: {
+    color: '#FFDDD8',
+    fontSize: Typography.fontSizeSM,
+    lineHeight: 20,
+    fontWeight: Typography.fontWeightSemiBold,
+  },
+  resultBox: {
+    gap: 2,
+  },
+  resultLabel: {
+    color: Colors.gold,
+    fontSize: Typography.fontSizeXS,
+    fontWeight: Typography.fontWeightSemiBold,
+    textTransform: 'uppercase',
+  },
+  resultName: {
+    color: Colors.white,
+    fontSize: Typography.fontSizeLG,
+    fontWeight: Typography.fontWeightBold,
+  },
+  resultMeta: {
+    color: 'rgba(255,255,255,0.7)',
+    fontSize: Typography.fontSizeSM,
+  },
+  resultButton: {
+    marginTop: Spacing.sm,
+  },
 
   errorContainer: {
     flex: 1,

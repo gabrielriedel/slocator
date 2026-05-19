@@ -209,6 +209,96 @@ export const buildings: Building[] = [
     coordinates: { latitude: 35.3027, longitude: -120.6655 },
     learnMoreUrl: 'https://music.calpoly.edu',
   },
+  {
+    id: 'engineering-east',
+    name: 'Engineering East',
+    shortName: 'Engineering East',
+    number: '20',
+    department: 'College of Engineering',
+    location: 'Engineering area, east side of campus',
+    yearBuilt: null,
+    description:
+      'Engineering East is part of Cal Poly\'s engineering core, supporting hands-on labs, classrooms, and project spaces for engineering students.',
+    funFacts: [
+      'The engineering area is one of the busiest academic zones on campus.',
+      'Students use nearby labs and shops for Learn by Doing design work.',
+      'It sits near several other engineering and technical buildings.',
+    ],
+    coordinates: { latitude: 35.3009, longitude: -120.6595 },
+    learnMoreUrl: 'https://engineering.calpoly.edu',
+  },
+  {
+    id: 'engineering-west-architecture',
+    name: 'Engineering West / Architectural Engineering',
+    shortName: 'Engineering West',
+    number: '21',
+    department: 'College of Architecture & Environmental Design',
+    location: 'Near the architecture and engineering buildings',
+    yearBuilt: null,
+    description:
+      'Engineering West supports architecture, architectural engineering, and related project-based coursework at Cal Poly.',
+    funFacts: [
+      'Architectural engineering bridges structural design, construction, and building systems.',
+      'The surrounding studios and labs are heavily used during project deadlines.',
+      'The area connects CAED and engineering workflows on campus.',
+    ],
+    coordinates: { latitude: 35.3004, longitude: -120.6619 },
+    learnMoreUrl: 'https://caed.calpoly.edu',
+  },
+  {
+    id: 'frank-pilling',
+    name: 'Frank E. Pilling Building',
+    shortName: 'Frank Pilling',
+    number: '14',
+    department: 'College of Engineering',
+    location: 'Engineering area of campus',
+    yearBuilt: null,
+    description:
+      'The Frank E. Pilling Building is one of Cal Poly\'s engineering facilities, used for technical instruction and applied project work.',
+    funFacts: [
+      'The building is named for Frank E. Pilling, an important figure in Cal Poly engineering history.',
+      'It is part of the dense cluster of engineering buildings near the center-east side of campus.',
+      'Students pass through this area frequently on the way to labs and design spaces.',
+    ],
+    coordinates: { latitude: 35.3010, longitude: -120.6602 },
+    learnMoreUrl: 'https://engineering.calpoly.edu',
+  },
+  {
+    id: 'frost-center',
+    name: 'William and Linda Frost Center for Research and Innovation',
+    shortName: 'Frost Center',
+    number: '181',
+    department: 'Research and Innovation',
+    location: 'Near Baker Science and the science quad',
+    yearBuilt: 2022,
+    description:
+      'The Frost Center for Research and Innovation brings together teaching, research, and interdisciplinary collaboration in modern lab and classroom spaces.',
+    funFacts: [
+      'The building supports cross-disciplinary student and faculty research.',
+      'Its location connects it closely with Baker Science and other STEM spaces.',
+      'The facility was designed for modern collaboration and flexible lab use.',
+    ],
+    coordinates: { latitude: 35.3004, longitude: -120.6612 },
+    learnMoreUrl: 'https://research.calpoly.edu',
+  },
+  {
+    id: 'construction-innovations-center',
+    name: 'Construction Innovations Center',
+    shortName: 'Construction Innovation',
+    number: '186',
+    department: 'Construction Management',
+    location: 'Near the engineering and construction management facilities',
+    yearBuilt: null,
+    description:
+      'The Construction Innovations Center supports Cal Poly construction management students with applied spaces for building methods, materials, and project work.',
+    funFacts: [
+      'Construction management students use applied labs to practice real-world jobsite workflows.',
+      'The program emphasizes estimating, scheduling, safety, and field coordination.',
+      'The center reflects Cal Poly\'s Learn by Doing approach to the built environment.',
+    ],
+    coordinates: { latitude: 35.3007, longitude: -120.6587 },
+    learnMoreUrl: 'https://construction.calpoly.edu',
+  },
 ];
 
 // Lookup helper
