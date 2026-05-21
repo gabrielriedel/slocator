@@ -72,6 +72,16 @@ export default function BuildingCard({ building, confidence }: BuildingCardProps
         </TouchableOpacity>
       ))}
 
+      {/* Learn by Doing story */}
+      {building.lbdStory && (
+        <>
+          <Text style={styles.sectionTitle}>📖  Learn by Doing</Text>
+          <View style={styles.lbdCard}>
+            <Text style={styles.lbdText}>{building.lbdStory}</Text>
+          </View>
+        </>
+      )}
+
       {/* Learn more */}
       {building.learnMoreUrl && (
         <TouchableOpacity
@@ -224,6 +234,21 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontWeight: Typography.fontWeightSemiBold,
     fontSize: Typography.fontSizeMD,
+  },
+
+  lbdCard: {
+    backgroundColor: Colors.white,
+    borderRadius: BorderRadius.md,
+    padding: Spacing.md,
+    marginBottom: Spacing.sm,
+    borderLeftWidth: 4,
+    borderLeftColor: Colors.green,
+    ...Shadows.sm,
+  },
+  lbdText: {
+    fontSize: Typography.fontSizeMD,
+    color: Colors.darkGray,
+    lineHeight: 22,
   },
 
   bottomPad: { height: Spacing.xl },
