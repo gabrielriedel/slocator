@@ -1,610 +1,326 @@
 [
-    {
-      "building_id": "1",
-      "name": "Administration Building",
-      "type": "Administration",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "2",
-      "name": "Education Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["ENGL", "LS", "POLS"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "3",
-      "name": "Business Building",
-      "type": "Administration",
-      "fun_facts": [],
-      "classes": ["BUS", "ECON", "ITP"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "4",
-      "name": "Research Development Center",
-      "type": "Laboratory",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "5",
-      "name": "Architecture & Environmental Design Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["ARCH","LA", "ARCE", "CM", "CRP"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "6",
-      "name": "Performing Arts Center",
-      "type": "Event Space",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "7",
-      "name": "Advanced Technology Labs",
-      "type": "Laboratory",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "8",
-      "name": "Bioresource and Agricultural Engineering Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["BRAE"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "9",
-      "name": "Farm Shop Building",
-      "type": "Agriculture Unit",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "10",
-      "name": "Erhart Agriculture Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["AGB", "AGC", "AGED", "AG", "EE", "ME", "PHIL", "POLS"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "11",
-      "name": "Agricultural Sciences Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "13",
-      "name": "Engineering Building",
-      "type": "Classroom",
-      "fun_facts": ["CE", "ENVE"],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "14",
-      "name": "Frank E. Piling Computer Science Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["CSC", "CPE", "SE", "DATA"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "15",
-      "name": "Mustang Commons Building",
-      "type": "IDK",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "17",
-      "name": "Crop Science Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "18",
-      "name": "Dairy Science Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "19",
-      "name": "Dining Complex",
+  {
+      "building_id": "45600394",
+      "gpkg_name": "Dining Complex",
+      "building_number": "19",
+      "building_name": "1901 Dining Complex",
+      "description": "1901 Marketplace has nine separate eatery venues, each with a unique culinary niche, ranging from Mediterranean and Mexican to sandwiches all located at the heart of Cal Poly's campus.",
       "type": "Dining",
       "fun_facts": [],
       "classes": [],
       "lbd_story": ""
-    },
-    {
-      "building_id": "20",
-      "name": "Engineering East Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["CPE", "CSC", "EE", "ENGL"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "21",
-      "name": "Engineering West Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["EE", "ITP", "COMS", "ENGL"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "22",
-      "name": "English Building",   
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["ENGL", "ES", "COMS"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "24",
-      "name": "Food Processing Building",
-      "type": "Agriculture Unit",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "25",
-      "name": "Faculty Offices East Building",
+  },
+  {
+      "building_id": "45638402",
+      "gpkg_name": "Administration",
+      "building_number": "1",
+      "building_name": "Administration Building",
+      "description": "A&F is the steward of Cal Poly's resources, its 9 units fulfill major operational roles for the university.  A&F is responsible for capital project planning and maintenance of nearly 6 million sq ft of space in the 150 major campus buildings.",
       "type": "Administration",
       "fun_facts": [],
       "classes": [],
       "lbd_story": ""
     },
     {
-      "building_id": "26",
-      "name": "Graphic Arts Building",
+      "building_id": "45638391",
+      "gpkg_name": "Agricultural Sciences",
+      "building_number": "11",
+      "building_name": "Agricultural Sciences Building",
+      "description": "Nestled between the Pacific Ocean and the world-class vineyards of the Edna Valley, Cal Poly's College of Agriculture, Food and Environmental Sciences boasts one of the nation's most prestigious undergraduate agriculture programs.",
       "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["GRC", "ANT", "GEOG", "JOUR", "PSY"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "27",
-      "name": "Health Center",
-      "type": "Health",
       "fun_facts": [],
       "classes": [],
       "lbd_story": ""
     },
     {
-      "building_id": "28",
-      "name": "Alumni and Conference Center",
+      "building_id": "45638408",
+      "gpkg_name": "Architecture and Environmental Design",
+      "building_number": "5",
+      "building_name": "Architecture & Environmental Design Building",
+      "description": "Architecture is one of five departments in the College of Architecture and Environmental Design (CAED), along with Architectural Engineering, City and Regional Planning, Construction Management, and Landscape Architecture.",
+      "type": "Classroom",
+      "fun_facts": [
+          "CAED is Cal Poly's smallest college with ~2,000 enrolled students",
+          "CAED offers 5 disciplines: Architecture, Architectural Engineering, City Planning, Construction Management, and Landscape Architecture",
+          "Architecture and Landscape Architecture are 5-year programs",
+          "Construction Management graduates have a 100% job placement rate",
+          "Construction Management graduates earn a median starting salary of $75,000",
+          "Construction Management graduates wear hard hats instead of grad caps at graduation",
+          "CAED is one of the largest programs of its type in the nation with all 5 disciplines"
+        ],
+      "classes": [
+        "ARCH",
+        "LA",
+        "ARCE",
+        "CM",
+        "CRP"
+      ],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "322170587",
+      "gpkg_name": "Warren J. Baker Center",
+      "building_number": "180",
+      "building_name": "Baker Center for Science and Math",
+      "description": "Located at the heart of campus to powerfully symbolize the central nature of science and mathematics in the university's polytechnic curriculum, the Warren J. Baker Center for Science and Mathematics opened for classes in fall 2013.",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "45644100",
+      "gpkg_name": "Construction Innovations Center",
+      "building_number": "186",
+      "building_name": "Construction Innovations Center",
+        "description": "The California Center for Construction Education (CCCE) is the liaison between Cal Poly alumni, students, and industry partners in order to create a network of leaders in the construction industry.",
+        "type": "Classroom",
+        "fun_facts": [],
+        "classes": [
+          "CSC",
+          "STAT",
+          "CM",
+          "GEOG",
+          "HIST"
+        ],
+        "lbd_story": ""
+    },
+    {
+      "building_id": "38939888",
+      "gpkg_name": "Walter F. Dexter Building",
+      "building_number": "34",
+      "building_name": "Dexter Building",
+      "description": "Dexter refers to the Walter F. Dexter building, or Building 34 on the Cal Poly Campus, which is home to the Art & Design Department, as well as Landscape Architecture and the ROTC program.",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [
+        "ART"
+      ],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "4504112",
+      "gpkg_name": "Engineering",
+      "building_number": "13",
+      "building_name": "Engineering Building",
+      "description": "The Cal Poly College of Engineering places an emphasis on preparing today's students to solve tomorrow's global challenges. U.S. News & World Report recently ranked one of the college's departments as the top specialty program in the nation.",
+      "type": "Classroom",
+      "fun_facts": [
+        "CE",
+        "ENVE"
+      ],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "38899881",
+      "gpkg_name": "Engineering IV",
+      "building_number": "192",
+        "building_name": "Engineering IV",
+        "description": "The Cal Poly College of Engineering places an emphasis on preparing today's students to solve tomorrow's global challenges. U.S. News & World Report recently ranked one of the college's departments as the top specialty program in the nation.",
+        "type": "Classroom",
+        "fun_facts": [],
+        "classes": [
+          "AERO",
+          "BMED",
+          "CE",
+          "CSC",
+          "ENVE",
+          "IME",
+          "MATE",
+          "ME"
+        ],
+        "lbd_story": ""
+    },
+    {
+      "building_id": "45600390",
+      "gpkg_name": "Alan A. Erhart Agriculture",
+      "building_number": "10",
+      "building_name": "Erhart Agriculture Building",
+      "description": "Nestled between the Pacific Ocean and the world-class vineyards of the Edna Valley, Cal Poly's College of Agriculture, Food and Environmental Sciences boasts one of the nation's most prestigious undergraduate agriculture programs.",
+      "type": "Classroom",
+      "fun_facts": [
+        "Students refer to joint Erhart Agriculture and English building as Aglish",
+        ""
+      ],
+      "classes": [
+        "AGB",
+        "AGC",
+        "AGED",
+        "AG",
+        "EE",
+        "ME",
+        "PHIL",
+        "POLS"
+      ],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "38939883",
+      "gpkg_name": "Frank E. Pilling Building",
+      "building_number": "14",
+      "building_name": "Frank E. Piling Computer Science Building",
+      "description": "Computer science is the study of computers and computer systems including the design and development of software.",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [
+        "CSC",
+        "CPE",
+        "SE",
+        "DATA"
+      ],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "38939879",
+      "gpkg_name": "Graphic Arts",
+      "building_number": "26",
+      "building_name": "Graphic Arts Building",
+      "description": "Graphic communication is the study of how we convey meaning through visual design. This includes the creation, production, management and distribution of advertising, marketing, websites, apps, books, packaging and other media in printed and digital form.",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [
+        "GRC",
+        "ANT",
+        "GEOG",
+        "JOUR",
+        "PSY"
+      ],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "118003905",
+      "gpkg_name": "Julian A. McPhee University Union (65)",
+      "building_number": "65",
+      "building_name": "Julian A. McPhee University Union",
+      "description": "Visit the UU to grab some Cal Poly gear at the University Store.",
       "type": "Event Space",
       "fun_facts": [],
       "classes": [],
       "lbd_story": ""
     },
     {
-      "building_id": "33",
-      "name": "Fisher Science Hall",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["BIO", "CHEM", "BOT"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "34",
-      "name": "Dexter Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["ART"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "35",
-      "name": "Kennedy Library",
+      "building_id": "2806804",
+      "gpkg_name": "Robert E. Kennedy Library",
+      "building_number": "35",
+      "building_name": "Kennedy Library",
+      "description": "The Kennedy Library Building is open following a two-year renovation.",
       "type": "Library",
       "fun_facts": [],
       "classes": [],
       "lbd_story": ""
     },
     {
-      "building_id": "36",
-      "name": "University Police Building",
+      "building_id": "45600389",
+      "gpkg_name": "Mathematics and Science (38)",
+      "building_number": "38",
+      "building_name": "Mathematics and Science Building",
+      "description": "Bailey College of Science and Mathematics, Enhancing lives through learning, discovery and innovation.",
+      "type": "Classroom",
+      "fun_facts": [],
+      "classes": [
+        "MATH",
+        "STAT",
+        "LS",
+        "CD"
+      ],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "45599074",
+      "gpkg_name": "Robert E. Mott Physical Education",
+      "building_number": "42",
+      "building_name": "Mott Athletics Center",
+      "description": "Located at the southeastern entrance to the university, Cal Poly's Mott Athletics Center has been the site of many historic athletic competitions for Cal Poly men's and women's basketball teams, women's volleyball and Mustang wrestling.",
+      "type": "Event Space",
+      "fun_facts": [],
+      "classes": [],
+      "lbd_story": ""
+    },
+    {
+      "building_id": "160415342",
+      "gpkg_name": "Orfalea College Of Business Building",
+      "building_number": "3",
+      "building_name": "Orfalea College Of Business Building",
+      "description": "Our learning experience, incorporating real-world business activity with essential technology and top-notch faculty, creates a thriving academic enterprise that effectively transitions students into careers.",
       "type": "Administration",
-      "fun_facts": [],
-      "classes": [],
+      "fun_facts": [
+          "3,382 students are enrolled in the Orfalea College of Business",
+          "Paul Orfalea donated $15M in 2000 to building_name the college",
+          "OCOB offers 12 concentrations across the college",
+          "120+ companies have been launched through the Center for Innovation & Entrepreneurship",
+          "CIE has created 1,000+ jobs since its founding in 2010",
+          "Companies launched through CIE have raised $250M",
+          "CIE companies have produced $500M in exits",
+          "OCOB alum Haley Pavone (Pashion Footwear) earned a Forbes 30 Under 30 distinction"
+        ],
+      "classes": [
+        "BUS",
+        "ECON",
+        "ITP"
+      ],
       "lbd_story": ""
     },
     {
-      "building_id": "38",
-      "name": "Mathematics and Science Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["MATH", "STAT", "LS", "CD"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "40",
-      "name": "Engineering South Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "41",
-      "name": "Brown Engineering Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["AERO", "IME", "MATE"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "42",
-      "name": "Mott Athletics Center",
+      "building_id": "486219813",
+      "gpkg_name": "Christopher Cohan Performing Arts Center",
+      "building_number": "6",
+      "building_name": "Performing Arts Center",
+      "description": "The Performing Arts Center San Luis Obispo is a state-of-the-art venue operated in partnership between Cal Poly, the City of SLO, and the Foundation for the Performing Arts Center.",
       "type": "Event Space",
       "fun_facts": [],
       "classes": [],
       "lbd_story": ""
     },
     {
-      "building_id": "43",
-      "name": "Recreation Center",
+      "building_id": "206420904",
+      "gpkg_name": "Recreation Center",
+      "building_number": "43",
+      "building_name": "Recreation Center",
+      "description": "The Recreation Center is Cal Poly's destination for fitness, recreation, relaxation, and wellness. Our state-of-the-art facility features everything you need for your workout, leisure, or recreational activity.",
       "type": "Event Space",
       "fun_facts": [],
       "classes": [],
       "lbd_story": ""
     },
     {
-      "building_id": "44",
-      "name": "Theater",
-      "type": "Event Space",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "45",
-      "name": "Davidson Music Center",
+      "building_id": "45638400",
+      "gpkg_name": "Science",
+      "building_number": "52",
+      "building_name": "Science Building",
+      "description": "Nestled in between the arms of Building 52, the Cal Poly Observatory is both portal to the stars and a tool for meaningful research.",
       "type": "Classroom",
       "fun_facts": [],
-      "classes": ["MU"],
+      "classes": [
+        "ASTR",
+        "ISLA"
+      ],
       "lbd_story": ""
     },
     {
-      "building_id": "46",
-      "name": "Old Natatorium",
-      "type": "Event Space",
-      "fun_facts": [],
-      "classes": ["DANC"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "47",
-      "name": "Faculty Offices North Building",
-      "type": "Administration",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "48",
-      "name": "Horticultural Science Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "51",
-      "name": "University House",
-      "type": "Administration",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "52",
-      "name": "Science Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["ASTR", "ISLA"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "53",
-      "name": "Science North Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["PHYS", "MSCI"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "57",
-      "name": "Veterinary Hospital",
-      "type": "Health",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "58",
-      "name": "Welding Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "60",
-      "name": "Crandall Gymnasium",
-      "type": "Event Space",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "65",
-      "name": "McPhee University Union",
-      "type": "Event Space",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "72",
-      "name": "Plant Conservatory",
-      "type": "Event Space",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "74",
-      "name": "Football Center",
-      "type": "Event Space",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "81",
-      "name": "Hillcrest Building",
-      "type": "IDK",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "100",
-      "name": "Shasta Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "101",
-      "name": "Diablo Hall",    
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "102",
-      "name": "Palomar Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "103",
-      "name": "Whitney Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "104",
-      "name": "Lassen Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "105",
-      "name": "Trinity Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "106",
-      "name": "Santa Lucia Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "17",
-      "name": "Muir Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "108",
-      "name": "Sequoia Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "109",
-      "name": "Fremont Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "110",
-      "name": "Tenaya Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "112",
-      "name": "Vista Grande",
+      "building_id": "672441026",
+      "gpkg_name": "112 Vista Grande Dining Complex",
+      "building_number": "112",
+      "building_name": "Vista Grande",
+      "description": "The three-story Vista Grande Dining Complex houses seven new dining venues and a neighborhood market in an energy-efficient building.",
       "type": "Dining",
       "fun_facts": [],
       "classes": [],
       "lbd_story": ""
     },
     {
-      "building_id": "113",
-      "name": "Sierra Madre Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "114",
-      "name": "Yosemite Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "115",
-      "name": "Chase Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "116",
-      "name": "Jespersen Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "117",
-      "name": "Heron Hall",
-      "type": "Residence Hall",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "124",
-      "name": "Student Services Building",
-      "type": "Administration",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "133",
-      "name": "Orfalea Children's Center",
-      "type": "IDK",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "156",
-      "name": "E & J Gallo Building",
-      "type": "IDK",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "157",
-      "name": "Lohr Family Winery",
-      "type": "IDK",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "159",
-      "name": "Plant Sciences Complex",
-      "type": "IDK",
-      "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "180",
-      "name": "Baker Center for Science and Math",
+      "building_id": "1217465601",
+      "gpkg_name": "William and Linda Frost Center for Research and Innovation (181)",
+      "building_number": "181",
+      "building_name": "William and Linda Frost Center for Research and Innovation",
+      "description": "Completed in May 2023, the Frost Center commands a striking presence on campus with its award-winning design that has created the ideal environment for exceptional research, innovation and collaboration.",
       "type": "Classroom",
       "fun_facts": [],
-      "classes": [],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "181",
-      "name": "Frost Center",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["AERO", "PSY"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "186",
-      "name": "Construction Innovations Center",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["CSC", "STAT", "CM", "GEOG", "HIST"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "192",
-      "name": "Engineering IV Building",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": ["AERO", "BMED", "CE", "CSC", "ENVE", "IME", "MATE", "ME"],
-      "lbd_story": ""
-    },
-    {
-      "building_id": "197",
-      "name": "Engineering Projects Center",
-      "type": "Classroom",
-      "fun_facts": [],
-      "classes": [],
+      "classes": [
+          "AERO",
+          "PSY"
+        ],
       "lbd_story": ""
     }
   ]
+  
