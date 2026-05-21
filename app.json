@@ -41,7 +41,8 @@
           "photosPermission": "SLocator accesses your photos to identify campus buildings.",
           "cameraPermission": "SLocator uses your camera to capture campus buildings."
         }
-      ]
+      ],
+      "expo-asset"
     ],
     "scheme": "slocator",
     "extra": {
