@@ -71,10 +71,8 @@ export const buildings: Building[] = [
       'CAED is Cal Poly\'s smallest college with ~2,000 enrolled students',
       'CAED offers 5 disciplines: Architecture, Architectural Engineering, City Planning, Construction Management, and Landscape Architecture',
       'Architecture and Landscape Architecture are 5-year programs',
-      'Construction Management graduates have a 100% job placement rate',
-      'Construction Management graduates earn a median starting salary of $75,000',
-      'Construction Management graduates wear hard hats instead of grad caps at graduation',
       'CAED is one of the largest programs of its type in the nation with all 5 disciplines',
+      'Because CAED is such a small department, almost all of the professors go by first names, are on first name basis with students and have a full open door policy'
     ],
     lbdStory:
       'Design Village! My team of 7 had 4 weeks to design, fabricate, transport, and construct a full scale structure to sleep in for a weekend! My team\'s design represented a kaleidoscope with 4 modular pods serving as beds for 2. We had to transport our final structure by foot ~1.5 miles from the ARCH buildings to Poly Canyon, figuring out the best method to transport this huge structure — my group created a makeshift cart out of 2 dolleys, pulling it with paracord attached to 3 people\'s backs like a backpack. We constructed the structure to its intended state on site, slept in it for the weekend, and enjoyed the community and scenery! Lots of bands performed in the geodesic dome, people sang songs and hung out until the stars shined bright in the sky.',
@@ -105,6 +103,7 @@ export const buildings: Building[] = [
       'Nestled between the Pacific Ocean and the world-class vineyards of the Edna Valley, Cal Poly\'s College of Agriculture, Food and Environmental Sciences boasts one of the nation\'s most prestigious undergraduate agriculture programs.',
     funFacts: [
       'Students refer to the joint Erhart Agriculture and English building as "Aglish"',
+      ""
     ],
     lbdStory:
       'I am currently doing research on Iberian pigs (a breed from Spain) about the effects of Roundup in their diet on their health. The concentration of Roundup, or glyphosate, in their food is the same as it is in human produce so this research will be applied to human health. There are three different diets we are using: a control, a "Western diet", and a Western diet with glyphosate — the same concentration found in produce like grapes. The study is looking at how glyphosate affects weight, behavior, and the likelihood of diseases like diabetes and kidney failure. This data can then be applied to human health!',
@@ -119,7 +118,12 @@ export const buildings: Building[] = [
     yearBuilt: null,
     description:
       'Nestled between the Pacific Ocean and the world-class vineyards of the Edna Valley, Cal Poly\'s College of Agriculture, Food and Environmental Sciences boasts one of the nation\'s most prestigious undergraduate agriculture programs.',
-    funFacts: [],
+    funFacts: [
+      'CAFES has 4,2000 students enrolled with 50+ student clubs and organizations',
+      'Students gain exposure to research and development, manufacturing practices,quality assurance, food safety and sanitation principles, as well as sales and marketing.',
+      'A beginning rodeo class is offered to all students who are interested and they participate in rodeo events on a small scale.',
+      'Enterprise classes allow students to gain even more hands-on experience across CAFES careers with courses including beekeeping, cheese making, and tractor driving.'
+    ],
     lbdStory:
       'Students spend a quarter running the Food Science Sensory Lab (located under the stairs in Frost next to the culinary lab). The purpose of the lab is to conduct taste tests for research projects and nationwide companies to gain consumer insight, which is then assessed to alter products. Within the class, students are responsible to plan, execute and analyze a sensory test, presenting their findings back to their company to help the products grow. Additionally, food science students can work for the sensory lab and anyone in SLO can participate in tests — you receive a gift card at the end! My favorite test to have worked on was a coffee creamer test, where a company wanted to see how their new non-dairy coffee creamer would stand against top competitors, and they used the test feedback to determine whether or not it belonged on the market!',
   },
@@ -133,7 +137,12 @@ export const buildings: Building[] = [
     yearBuilt: null,
     description:
       'The Cal Poly College of Engineering places an emphasis on preparing today\'s students to solve tomorrow\'s global challenges. U.S. News & World Report recently ranked one of the college\'s departments as the top specialty program in the nation.',
-    funFacts: [],
+    funFacts: [
+      'CENG is the largest college at Cal Poly, with over 6,000 students',
+      'CENG has 80+ labs to use for classwork or outside projects, including the Welding Lab, Machine Shop, Casting Lab, and more.',
+      'CENG hosts specialized career fairs for engineering students in general, with some focusing on specific majors.',
+      'EPIC and ENGAGE are pipeline programs to recruit future underrepresented students interested in Engineering'
+    ],
   },
   {
     id: 'frank-pilling',
@@ -145,7 +154,11 @@ export const buildings: Building[] = [
     yearBuilt: null,
     description:
       'Computer science is the study of computers and computer systems including the design and development of software.',
-    funFacts: [],
+    funFacts: [
+      'Nearly every Computer Science lecture has an associated lab section for hands-on-keyboard leaning.',
+      'The Cal Poly Hack4Impact club gives students the opportunity to build software solutions for local SLO nonprofits.',
+      'Cal Poly CS/CPE/SE grads have gone on to work at companies including Google, Microsoft, Apple, Yahoo, IBM, SUN, Intel, Intuit, Amgen, Adobe, Salesforce, and more.'
+    ],
     lbdStory:
       'I am a part of the AI for search and rescue project at Cal Poly! We are a group of computer science students trying to create an AI model that can help the San Luis Obispo Search and Rescue team. We are still in the early stages of the model, but the goal is to create a clue triage model that will accept clues/tips from the public and sort them by severity and importance to give hints to search and rescue teams for areas/locations a person may be! This also includes popular areas and paths people tend to get lost on, and where they are likely to be found.',
     coordinates: { latitude: 35.3010, longitude: -120.6602 },
@@ -161,7 +174,10 @@ export const buildings: Building[] = [
     yearBuilt: null,
     description:
       '1901 Marketplace has nine separate eatery venues, each with a unique culinary niche, ranging from Mediterranean and Mexican to sandwiches — all located at the heart of Cal Poly\'s campus.',
-    funFacts: [],
+    funFacts: [
+      '1901 Marketplaces includes restuarants Chick-fil-A, Pico\'s, Pom & Honey, Julian\'s Cafe, Red Radish, Panda Express, Poly Choice, and 1901 Kitchen.'
+
+    ],
   },
   {
     id: 'graphic-arts-building',
@@ -281,7 +297,11 @@ export const buildings: Building[] = [
     yearBuilt: null,
     description:
       'The three-story Vista Grande Dining Complex houses seven new dining venues and a neighborhood market in an energy-efficient building.',
-    funFacts: [],
+    funFacts: [
+      'Vista Grande includes restuarants Balance Cafe, Brunch, Hearth, Jamba, Market Grand Ave, Noodles, Streats, Sweet Bar, Mingle, Nosh, Deli at Market Grand Ave, and Vista Grande Express.',
+      'The restuarant Streats rotates its menu offerings every few weeks to offer a wide variety of cuisines.',
+      ''
+    ],
   },
   {
     id: 'baker-science',
@@ -294,6 +314,7 @@ export const buildings: Building[] = [
     description:
       'Located at the heart of campus to powerfully symbolize the central nature of science and mathematics in the university\'s polytechnic curriculum, the Warren J. Baker Center for Science and Mathematics opened for classes in fall 2013.',
     funFacts: [],
+    lbdStory: 'During my first year I reached out to some professors in the chem department about research, and was able to join a research team looking at yeast proteins which can be used for anti-fungal pharmaceuticals. I was trained in Spring Quarter and then applied to FSURP (Frost Summer Undergrad Research Program). I got a $5,000 stipend to stay in SLO over the summer, and I got really incredible hands-on experiences working in the lab, which has helped me be more confident in my classes. This experience has also pushed me to go into an industry job post-grad, rather than a higher degree — which is really exciting!',
     coordinates: { latitude: 35.3003, longitude: -120.6618 },
     learnMoreUrl: 'https://cosam.calpoly.edu',
   },
@@ -323,7 +344,10 @@ export const buildings: Building[] = [
     yearBuilt: null,
     description:
       'The California Center for Construction Education (CCCE) is the liaison between Cal Poly alumni, students, and industry partners in order to create a network of leaders in the construction industry.',
-    funFacts: [],
+    funFacts: [
+      'Construction Management has a 100% job placement rate, with a median salary of $75,000',
+      'CM students wear hard hats instead of grad caps at graduation!'
+    ],
     lbdStory:
       'In my Residential Construction class we created a full bid for a house which included a full estimate and schedule that we then presented to our professor. In the lab portion, we built a mini house over the quarter based on a set of plans. This entailed fully framing, roofing, and siding the house as well as installing all doors and windows. My class built it ourselves by hand using actual equipment (hammers, nails, table saws, skill saws, etc.) and real framing techniques that our professor taught us.',
     coordinates: { latitude: 35.3007, longitude: -120.6587 },
