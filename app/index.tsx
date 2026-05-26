@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
+import { Asset } from 'expo-asset';
 import { Colors, Typography, Spacing, BorderRadius, Shadows } from '../constants/theme';
 
 export default function HomeScreen() {
@@ -83,6 +84,20 @@ export default function HomeScreen() {
     }
   }
 
+  async function handleTrySample() {
+    const asset = Asset.fromModule(require('../assets/baker_ex.jpg'));
+    await asset.downloadAsync();
+    if (!asset.localUri) return;
+    router.push({
+      pathname: '/analyze',
+      params: {
+        imageUri: asset.localUri,
+        imageName: 'baker_ex.jpg',
+        imageMimeType: 'image/jpeg',
+      },
+    });
+  }
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -122,6 +137,23 @@ export default function HomeScreen() {
               <Text style={styles.secondaryBtnSub}>Choose an existing photo</Text>
             </View>
           </TouchableOpacity>
+        </View>
+
+        {/* Demo trial */}
+        <View style={styles.demoSection}>
+          <View style={styles.divider}>
+            <View style={styles.dividerLine} />
+            <Text style={styles.dividerText}>OR</Text>
+            <View style={styles.dividerLine} />
+          </View>
+          <View style={styles.demoCard}>
+            <Text style={styles.demoTitle}>Not in SLO?</Text>
+            <Text style={styles.demoBody}>Try the app on a sample Cal Poly building.</Text>
+            <TouchableOpacity style={styles.demoBtn} onPress={handleTrySample} activeOpacity={0.8}>
+              <Text style={styles.demoBtnIcon}>🏛️</Text>
+              <Text style={styles.demoBtnLabel}>Try Sample Photo</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         {/* Footer */}
@@ -245,6 +277,64 @@ const styles = StyleSheet.create({
     fontSize: Typography.fontSizeSM,
     color: 'rgba(255,255,255,0.7)',
     marginTop: 2,
+  },
+
+  // ── Demo trial ────────────────────────────────────────────
+  demoSection: { marginTop: Spacing.sm },
+  divider: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: Spacing.xs,
+    marginBottom: Spacing.md,
+    gap: Spacing.sm,
+  },
+  dividerLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: 'rgba(255,255,255,0.15)',
+  },
+  dividerText: {
+    color: 'rgba(255,255,255,0.35)',
+    fontSize: Typography.fontSizeXS,
+    fontWeight: Typography.fontWeightSemiBold,
+    letterSpacing: 1,
+  },
+  demoCard: {
+    backgroundColor: Colors.darkGreen,
+    borderRadius: BorderRadius.lg,
+    padding: Spacing.md,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: Colors.gold + '33',
+    gap: Spacing.xs,
+  },
+  demoTitle: {
+    fontSize: Typography.fontSizeMD,
+    fontWeight: Typography.fontWeightBold,
+    color: Colors.white,
+  },
+  demoBody: {
+    fontSize: Typography.fontSizeSM,
+    color: 'rgba(255,255,255,0.6)',
+    textAlign: 'center',
+  },
+  demoBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: Spacing.sm,
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: Colors.gold + '88',
+    borderRadius: BorderRadius.md,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.sm,
+    gap: Spacing.sm,
+  },
+  demoBtnIcon: { fontSize: 18 },
+  demoBtnLabel: {
+    fontSize: Typography.fontSizeSM,
+    fontWeight: Typography.fontWeightSemiBold,
+    color: Colors.gold,
   },
 
   // ── Footer ────────────────────────────────────────────────
