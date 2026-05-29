@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Platform,
   Alert,
+  ScrollView,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
@@ -85,22 +86,41 @@ export default function HomeScreen() {
   }
 
   async function handleTrySample() {
-    const asset = Asset.fromModule(require('../assets/baker_ex.jpg'));
-    await asset.downloadAsync();
-    if (!asset.localUri) return;
+    const asset = Asset.fromModule(require('../backend/data/baker_ex.HEIC'));
+    const previewAsset = Asset.fromModule(require('../assets/baker_ex.jpg'));
+    let sampleUri = asset.uri;
+    let previewUri = previewAsset.uri;
+
+    if (Platform.OS !== 'web') {
+      await asset.downloadAsync();
+      await previewAsset.downloadAsync();
+      sampleUri = asset.localUri ?? asset.uri;
+      previewUri = previewAsset.localUri ?? previewAsset.uri;
+    }
+
+    if (!sampleUri) {
+      Alert.alert('Sample Unavailable', 'The bundled sample photo could not be loaded.');
+      return;
+    }
+
     router.push({
       pathname: '/analyze',
       params: {
-        imageUri: asset.localUri,
-        imageName: 'baker_ex.jpg',
-        imageMimeType: 'image/jpeg',
+        imageUri: sampleUri,
+        previewUri,
+        imageName: 'baker_ex.HEIC',
+        imageMimeType: 'image/heic',
       },
     });
   }
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled"
+      >
 
         {/* Header area */}
         <View style={styles.header}>
@@ -165,15 +185,16 @@ export default function HomeScreen() {
           <Text style={styles.footerText}>10 buildings identified</Text>
         </View>
 
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: Colors.green },
+  scroll: { flex: 1, backgroundColor: Colors.green },
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: Colors.green,
     paddingHorizontal: Spacing.lg,
     paddingTop: Platform.OS === 'android' ? Spacing.xxl : Spacing.lg,
