@@ -2,15 +2,18 @@
  * Building prediction service.
  *
  * Calls the Gradio app that wraps the local OpenCLIP + SIFT-LightGlue ranker.
- * The current public URL is temporary, so update GRADIO_BASE_URL whenever you
- * restart Gradio and get a new gradio.live link.
+ * For local web development, run Gradio on port 7860. Set
+ * EXPO_PUBLIC_GRADIO_BASE_URL if you need to point at a temporary gradio.live URL.
  */
 
 import { Platform } from 'react-native';
 
 export interface Prediction {
-  buildingId: string;
+  buildingId: string | null;
   confidence: number;
+  label?: string;
+  noBuilding?: boolean;
+  reason?: string;
   topK?: PredictionCandidate[];
 }
 
@@ -29,20 +32,42 @@ type GradioDataframe = {
   data: unknown[][];
 };
 
-const GRADIO_BASE_URL = 'https://2e29fc8cd177e269cf.gradio.live';
+const GRADIO_BASE_URL = process.env.EXPO_PUBLIC_GRADIO_BASE_URL ?? 'http://127.0.0.1:7860';
 const GRADIO_RESULT_TIMEOUT_MS = 180000;
 
 const EXACT_LABEL_TO_BUILDING_ID: Record<string, string> = {
-  '0architectureuploadwithsubflowerrorhandling587undistortedimages': 'engineering-west-architecture',
+  '0architectureuploadwithsubflowerrorhandling587undistortedimages': 'architecture-building',
   '0businesscotchettuploadwithsubflowerrorhandling587undistortedimages': 'business-building',
   '0constructioninnovationuploadwithsubflowerrorhandling587undistortedimages': 'construction-innovations-center',
   '0dexteruploadwithsubflowerrorhandling587undistortedimages': 'dexter-building',
-  '0engineeringeastuploadwithsubflowerrorhandling587undistortedimages': 'engineering-east',
+  '0engineeringeastuploadwithsubflowerrorhandling587undistortedimages': 'engineering-building',
   '0frankepilinguploadwithsubflowerrorhandling587undistortedimages': 'frank-pilling',
   '1bakeruploadwithsubflowerrorhandling587undistortedimages': 'baker-science',
   '1frostuploadwithsubflowerrorhandling587undistortedimages': 'frost-center',
   '1reccenteruploadwithsubflowerrorhandling587undistortedimages': 'recreation-center',
   '2uuuploadwithsubflowerrorhandling587undistortedimages': 'university-union',
+  '1901diningcomplex': 'dining-complex-1901',
+  'administrationbuilding': 'administration-building',
+  'agriculturalsciencesbuilding': 'agricultural-sciences',
+  'architectureenvironmentaldesignbuilding': 'architecture-building',
+  'bakercenterforscienceandmath': 'baker-science',
+  'constructioninnovationscenter': 'construction-innovations-center',
+  'dexterbuilding': 'dexter-building',
+  'engineeringbuilding': 'engineering-building',
+  'engineeringiv': 'engineering-iv',
+  'erhartagriculturebuilding': 'erhart-agriculture',
+  'frankepilingcomputersciencebuilding': 'frank-pilling',
+  'graphicartsbuilding': 'graphic-arts-building',
+  'julianamcpheeuniversityunion': 'university-union',
+  'kennedylibrary': 'kennedy-library',
+  'mathematicsandsciencebuilding': 'math-science-building',
+  'mottathleticscenter': 'mott-athletics',
+  'orfaleacollegeofbusinessbuilding': 'business-building',
+  'performingartscenter': 'performing-arts-center',
+  'recreationcenter': 'recreation-center',
+  'sciencebuilding': 'science-building',
+  'vistagrande': 'vista-grande',
+  'williamandlindafrostcenterforresearchandinnovation': 'frost-center',
 };
 
 function canonical(value: string): string {
@@ -55,11 +80,23 @@ function mapModelLabelToBuildingId(label: string): string | null {
   if (exact) return exact;
 
   if (key.includes('constructioninnovation')) return 'construction-innovations-center';
+  if (key.includes('administration')) return 'administration-building';
+  if (key.includes('agriculturalsciences')) return 'agricultural-sciences';
+  if (key.includes('erhart')) return 'erhart-agriculture';
   if (key.includes('business') || key.includes('cotchett')) return 'business-building';
-  if (key.includes('engineeringeast')) return 'engineering-east';
+  if (key.includes('engineeringiv')) return 'engineering-iv';
+  if (key.includes('engineeringeast') || key.includes('engineeringbuilding')) return 'engineering-building';
   if (key.includes('frankepiling') || key.includes('pilling')) return 'frank-pilling';
-  if (key.includes('architecture')) return 'engineering-west-architecture';
+  if (key.includes('architecture')) return 'architecture-building';
+  if (key.includes('performingarts') || key.includes('pac')) return 'performing-arts-center';
+  if (key.includes('mott')) return 'mott-athletics';
+  if (key.includes('diningcomplex') || key.includes('1901')) return 'dining-complex-1901';
+  if (key.includes('graphicarts')) return 'graphic-arts-building';
   if (key.includes('dexter')) return 'dexter-building';
+  if (key.includes('kennedy')) return 'kennedy-library';
+  if (key.includes('mathematicsandscience') || key.includes('mathscience')) return 'math-science-building';
+  if (key.includes('sciencebuilding')) return 'science-building';
+  if (key.includes('vistagrande')) return 'vista-grande';
   if (key.includes('frost')) return 'frost-center';
   if (key.includes('baker')) return 'baker-science';
   if (key.includes('reccenter') || key.includes('recreation')) return 'recreation-center';
@@ -274,10 +311,11 @@ function predictionsFromTable(table: GradioDataframe | null): PredictionCandidat
     const buildingId = mapModelLabelToBuildingId(label);
     if (!buildingId || seen.has(buildingId)) continue;
 
+    const confidenceCell = row.length > 5 ? row[5] : row[1];
     seen.add(buildingId);
     candidates.push({
       buildingId,
-      confidence: Math.max(0, Math.min(1, numberFromCell(row[1], 0))),
+      confidence: Math.max(0, Math.min(1, numberFromCell(confidenceCell, 0))),
     });
   }
 
@@ -289,14 +327,26 @@ export async function predictBuilding(imageUri: string, options: UploadImageOpti
   const result = await callGradioPredict(uploadedPath);
 
   const label = String(result[0] ?? '');
+  const reason = String(result[1] ?? '');
   const table = result[2] as GradioDataframe | null;
   const buildingId = mapModelLabelToBuildingId(label);
   const topK = predictionsFromTable(table);
 
   if (!buildingId) {
+    if (canonical(label) === 'nobuilding') {
+      return {
+        buildingId: null,
+        confidence: topK[0]?.confidence ?? 0,
+        label,
+        noBuilding: true,
+        reason,
+        topK,
+      };
+    }
+
     throw new Error(`Model returned an unmapped building label: ${label}`);
   }
 
   const confidence = topK[0]?.buildingId === buildingId ? topK[0].confidence : 0.5;
-  return { buildingId, confidence, topK };
+  return { buildingId, confidence, label, noBuilding: false, reason, topK };
 }

@@ -22,8 +22,9 @@ interface AnalyzeResult {
 }
 
 export default function AnalyzeScreen() {
-  const { imageUri, imageName, imageMimeType } = useLocalSearchParams<{
+  const { imageUri, previewUri, imageName, imageMimeType } = useLocalSearchParams<{
     imageUri: string;
+    previewUri?: string;
     imageName?: string;
     imageMimeType?: string;
   }>();
@@ -39,6 +40,7 @@ export default function AnalyzeScreen() {
       pathname: '/result',
       params: {
         imageUri,
+        previewUri,
         buildingId: nextResult.buildingId,
         confidence: String(nextResult.confidence),
       },
@@ -59,6 +61,21 @@ export default function AnalyzeScreen() {
         mimeType: imageMimeType,
       });
       console.log('[SLocator] Prediction result', prediction);
+
+      if (prediction.noBuilding || !prediction.buildingId) {
+        const closest = prediction.topK?.[0];
+        const closestBuilding = closest ? getBuildingById(closest.buildingId) : null;
+        const closestText = closest && closestBuilding
+          ? ` Closest visual guess: ${closestBuilding.name} with ${(closest.confidence * 100).toFixed(1)}% model confidence.`
+          : '';
+        setStatus('No confident Cal Poly building match.');
+        setError(
+          `The model did not find enough visual evidence for a supported campus building.${closestText} Try a clearer photo with the building centered.`
+        );
+        setLoading(false);
+        return;
+      }
+
       setStatus(`Model returned ${prediction.buildingId}. Looking up building details...`);
       const building = getBuildingById(prediction.buildingId);
 
@@ -105,7 +122,7 @@ export default function AnalyzeScreen() {
 
         {/* Photo preview */}
         <View style={styles.imageWrapper}>
-          <Image source={{ uri: imageUri }} style={styles.image} resizeMode="cover" />
+          <Image source={{ uri: previewUri || imageUri }} style={styles.image} resizeMode="cover" />
           <View style={styles.imageOverlay}>
             <Text style={styles.overlayText}>📸  Ready to analyze</Text>
           </View>

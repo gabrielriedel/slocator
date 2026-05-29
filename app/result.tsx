@@ -14,8 +14,9 @@ import CalPolyButton from '../components/CalPolyButton';
 import { Colors, Typography, Spacing, Shadows } from '../constants/theme';
 
 export default function ResultScreen() {
-  const { imageUri, buildingId, confidence } = useLocalSearchParams<{
+  const { imageUri, previewUri, buildingId, confidence } = useLocalSearchParams<{
     imageUri: string;
+    previewUri?: string;
     buildingId: string;
     confidence: string;
   }>();
@@ -46,7 +47,7 @@ export default function ResultScreen() {
 
         {/* Sticky photo header */}
         <View style={styles.photoHeader}>
-          <Image source={{ uri: imageUri }} style={styles.photo} resizeMode="cover" />
+          <Image source={{ uri: previewUri || imageUri }} style={styles.photo} resizeMode="cover" />
           <View style={styles.photoGradient}>
             <View style={styles.matchBadge}>
               <Text style={styles.matchBadgeIcon}>✅</Text>
